@@ -43,7 +43,6 @@ const Login = () => {
         let status = auth.signin(data.login, data.password);
         if (status) {
             history.push("/table");
-            
         }
     };
 
