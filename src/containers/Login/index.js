@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Login = () => {
     const classes = useStyles();
-    const history = useHistory() || [];
+    const history = useHistory();
     const auth = useAuth();
     const {
         register,
@@ -42,7 +42,8 @@ const Login = () => {
     const onSubmit = (data) => {
         let status = auth.signin(data.login, data.password);
         if (status) {
-            history.push("/");
+            history.push("/table");
+            
         }
     };
 

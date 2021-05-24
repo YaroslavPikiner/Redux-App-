@@ -1,5 +1,5 @@
 
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -44,7 +44,6 @@ const UserTable = () => {
     const createData = (id, name, username, email, phone, website) => {
         return { id, name, username, email, phone, website };
     }
-
     const handleClick = (id) => history.push(`table/${id}`);
 
     const rows = users.map(item => createData(item.id, item.name, item.username, item.email, item.phone, item.website))

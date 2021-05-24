@@ -4,12 +4,12 @@ import {
     Switch,
 } from "react-router-dom";
 import PrivateRoute from './protectedRoutes';
-import Header from '../components/header';
+import Header from '../components/header/index';
 import Home from '../containers/Home/index';
 import Login from '../containers/Login/index';
 import UserTable from '../containers/Table/index';
 import Tickets from '../containers/Tickets/index';
-import TableItem from '../containers/Table/index';
+import TableItem from '../containers/Table/components/tableItem/index';
 import { useAuth } from '../hooks/use-auth';
 
 
@@ -22,17 +22,12 @@ const Routes = () => {
                 <Route exact path='/'>
                     <Home />
                 </Route>
-                <Route path='/login'>
-                    <Login login={login} signout={signout} />
-                </Route>
-                <PrivateRoute user={user} path='/table' component={UserTable} />
-                <Route path='/table/:id' >
-                    <TableItem user={user} />
-                </Route>
+                <Route path='/login' component={() => <Login login={login} signout={signout} />} />
+                <Route path='/table/:id' component={() => <TableItem user={user} />} />
+                <PrivateRoute exact user={user} path='/table' component={UserTable} />
                 <PrivateRoute user={user} path='/tickets' component={Tickets} />
             </Switch>
-        </Router>
+        </Router >
     )
 }
-
 export default Routes;
