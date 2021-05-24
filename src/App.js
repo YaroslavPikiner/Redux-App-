@@ -1,9 +1,11 @@
-import { Routes } from './routes/routes';
-
+import Routes from './routes/Router';
+import { ProvideAuth } from "./hooks/use-auth";
 function App() {
   return (
     <>
-      <Routes />
+      <ProvideAuth>
+        <Routes />
+      </ProvideAuth>
     </>
   );
 }

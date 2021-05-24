@@ -1,9 +1,11 @@
-import { useHistory } from "react-router-dom";
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import { useAuth } from '../../hooks/use-auth';
+import { useForm } from 'react-hook-form';
+import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -26,39 +28,47 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
-const Login = ({ auth }) => {
+const Login = () => {
     const classes = useStyles();
-    let history = useHistory();
+    const history = useHistory() || [];
+    const auth = useAuth();
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm();
 
 
+    const onSubmit = (data) => {
+        let status = auth.signin(data.login, data.password);
+        if (status) {
+            history.push("/");
+        }
+    };
 
     return (
-        <div className={classes.paper}>
+        <div className={classes.paper} >
             <Avatar className={classes.avatar}>
                 <LockOutlinedIcon />
             </Avatar>
-            <form className={classes.root} onSubmit={formik.handleSubmit}>
+            <form className={classes.root} onSubmit={handleSubmit(onSubmit)}>
                 <TextField
                     fullWidth
                     id="email"
                     name="email"
                     label="Email"
-                    value={formik.values.email}
-                    onChange={formik.handleChange}
-                    error={formik.touched.email && Boolean(formik.errors.email)}
-                    helperText={formik.touched.email && formik.errors.email}
+                    {...register('login', { required: true })}
                 />
+                {errors.exampleRequired && <span>This field is required</span>}
                 <TextField
                     fullWidth
                     id="password"
                     name="password"
                     label="Password"
                     type="password"
-                    value={formik.values.password}
-                    onChange={formik.handleChange}
-                    error={formik.touched.password && Boolean(formik.errors.password)}
-                    helperText={formik.touched.password && formik.errors.password}
+                    {...register('password', { required: true })}
                 />
+                {errors.exampleRequired && <span>This field is required</span>}
                 <Button type="submit"
                     fullWidth
                     variant="contained"

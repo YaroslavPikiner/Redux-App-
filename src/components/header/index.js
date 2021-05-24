@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ButtonAppBar() {
+export default function Header({ user, signout }) {
   const classes = useStyles();
 
   return (
@@ -45,12 +45,12 @@ export default function ButtonAppBar() {
                 </Link>
               </Button>
               <Button color="inherit">
-                <Link to='/' className='logo'>
+                <Link to='/table' className='logo'>
                   Table
                 </Link>
               </Button>
               <Button color="inherit">
-                <Link to='/' className='logo'>
+                <Link to='/tickets' className='logo'>
                   Tickets
                 </Link>
               </Button>
