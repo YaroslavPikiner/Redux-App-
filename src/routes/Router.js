@@ -7,7 +7,7 @@ import PrivateRoute from './protectedRoutes';
 import Header from '../components/header';
 import Home from '../containers/Home/index';
 import Login from '../containers/Login/index';
-import Table from '../containers/Table/index';
+import UserTable from '../containers/Table/index';
 import Tickets from '../containers/Tickets/index';
 import TableItem from '../containers/Table/index';
 import { useAuth } from '../hooks/use-auth';
@@ -25,7 +25,7 @@ const Routes = () => {
                 <Route path='/login'>
                     <Login login={login} signout={signout} />
                 </Route>
-                <PrivateRoute user={user} path='/table' component={Table} />
+                <PrivateRoute user={user} path='/table' component={UserTable} />
                 <Route path='/table/:id' >
                     <TableItem user={user} />
                 </Route>
