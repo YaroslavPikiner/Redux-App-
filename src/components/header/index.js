@@ -40,11 +40,6 @@ export default function Header({ user, signout }) {
           {user ? (
             <>
               <Button color="inherit">
-                <Link to='/' onClick={signout} className='nav-visible-seach button'>
-                  Logout
-                </Link>
-              </Button>
-              <Button color="inherit">
                 <Link to='/table' className='logo'>
                   Table
                 </Link>
@@ -52,6 +47,11 @@ export default function Header({ user, signout }) {
               <Button color="inherit">
                 <Link to='/tickets' className='logo'>
                   Tickets
+                </Link>
+              </Button>
+              <Button color="inherit">
+                <Link to='/' onClick={signout} className='nav-visible-seach button'>
+                  Logout
                 </Link>
               </Button>
             </>

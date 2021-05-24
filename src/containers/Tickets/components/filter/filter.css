@@ -1,0 +1,32 @@
+.filter__wrapper {
+    min-width: 232px;
+    height: 252px;
+    background-color: #fff;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    margin: 0 30px;
+    border-radius: 5px;
+    
+}
+
+.filter {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+
+.filter__title {
+	font-style: normal;
+	font-weight: 600;
+	font-size: 12px;
+	line-height: 12px;
+    text-transform: uppercase;
+}
+
+.filter__list {
+	display: flex;
+	flex-direction: column;
+    justify-content: center;
+}

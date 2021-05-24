@@ -1,0 +1,25 @@
+.ticketList {
+	display: flex;
+	flex-direction: column;
+}
+
+.btn_more {
+	height: 50px;
+	color: #fff;
+	background-color: #2196f3;
+	border-radius: 5px;
+	border: none;
+	margin-bottom: 50px;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 12px;
+	line-height: 20px;
+    cursor: pointer;
+    transition: all .2s;
+}
+
+
+.btn_more:hover {
+    background-color: #fff;
+	color: #2196f3;
+}

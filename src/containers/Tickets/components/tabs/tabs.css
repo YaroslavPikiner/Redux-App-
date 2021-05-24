@@ -1,0 +1,30 @@
+.tab__container {
+    margin-bottom: 20px;
+}
+
+.btn {
+    width: 168px;
+    height: 50px;
+    margin: 0;
+    text-align: center;
+    text-transform: uppercase;
+    border: none;
+    transition: all .2s;
+    background: #FFFFFF;
+    color: #4A4A4A;
+}
+
+.btn:hover {
+    color: #fff;
+    background-color: #2196F3;
+    cursor: pointer;
+
+}
+
+.btn:first-child {
+    border-top-left-radius: 5px;
+}
+
+.btn:last-child {
+    border-top-right-radius: 5px;
+}
