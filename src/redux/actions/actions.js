@@ -4,6 +4,8 @@ import {
   CHEAP_TICKET,
   FAST_TICKET,
   OPTIMAL_TICKET,
+  LOAD_DATA,
+  PUT_DATA,
 } from '../types';
 
 export const login = () => {
@@ -15,6 +17,19 @@ export const login = () => {
 export const logout = () => {
   return {
     type: SIGN_OUT,
+  };
+};
+
+export const loadData = () => {
+  return {
+    type: LOAD_DATA,
+  };
+};
+
+export const putData = (dataFromServer) => {
+  return {
+    type: PUT_DATA,
+    payload: dataFromServer,
   };
 };
 
@@ -35,4 +50,3 @@ export const optimalTicket = () => {
     type: OPTIMAL_TICKET,
   };
 };
-

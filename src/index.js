@@ -7,9 +7,15 @@ import { rootReducer } from './redux/reducers/rootReducer';
 import { Provider } from 'react-redux';
 import './index.css';
 import logger from 'redux-logger';
-import thunk from 'redux-thunk';
+import createSagaMiddleWare from 'redux-saga';
+import { watchLoadData } from './redux/sagas';
 
-const store = createStore(rootReducer, applyMiddleware(logger, thunk))
+const sagasMiddleWare = createSagaMiddleWare();
+const store = createStore(
+  rootReducer,
+  applyMiddleware(logger, sagasMiddleWare)
+);
+sagasMiddleWare.run(watchLoadData)
 
 render(
   <Provider store={store}>
