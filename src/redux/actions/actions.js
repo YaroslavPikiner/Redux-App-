@@ -6,6 +6,8 @@ import {
   OPTIMAL_TICKET,
   LOAD_DATA,
   PUT_DATA,
+  LOAD_TICKETS,
+  PUT_TICKETS,
 } from '../types';
 
 export const login = () => {
@@ -29,6 +31,19 @@ export const loadData = () => {
 export const putData = (dataFromServer) => {
   return {
     type: PUT_DATA,
+    payload: dataFromServer,
+  };
+};
+
+export const loadTickets = () => {
+  return {
+    type: LOAD_TICKETS,
+  };
+};
+
+export const putTickets = (dataFromServer) => {
+  return {
+    type: PUT_TICKETS,
     payload: dataFromServer,
   };
 };
