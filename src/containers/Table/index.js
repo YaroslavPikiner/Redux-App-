@@ -10,6 +10,7 @@ import Paper from '@material-ui/core/Paper';
 import TableRow from '@material-ui/core/TableRow';
 import HeaderTitle from './components/headerTitle';
 import TableData from './components/tableData';
+import { useSelector, useDispatch } from 'react-redux';
 
 const StyledTableRow = withStyles((theme) => ({
     root: {
@@ -28,7 +29,8 @@ const useStyles = makeStyles({
 const UserTable = () => {
     const classes = useStyles();
     let history = useHistory();
-
+    const filter = useSelector(state => state.loginReducer)
+    console.log(filter)
 
     const [users, setUsers] = useState([]);
     const [isFiltered, setIsFiltered] = useState(false);

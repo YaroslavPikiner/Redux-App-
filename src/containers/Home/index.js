@@ -10,8 +10,6 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
-import { useSelector, useDispatch } from 'react-redux';
-import { testFn } from '../../redux/actions/actions'
 
 
 function Copyright() {
@@ -62,9 +60,6 @@ const useStyles = makeStyles((theme) => ({
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 function Home() {
-  const ababab = useSelector((state) => state);
-  const dispatch = useDispatch();
-  console.log(ababab);
   const classes = useStyles();
 
   return (
@@ -80,12 +75,6 @@ function Home() {
               color='textPrimary'
               gutterBottom>
               Album layout
-              <Button
-                onClick={() => dispatch(testFn({}))}
-                variant='outlined'
-                color='primary'>
-                Click me
-              </Button>
             </Typography>
             <Typography
               variant='h5'
