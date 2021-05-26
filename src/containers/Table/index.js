@@ -12,6 +12,7 @@ import TableData from './components/tableData';
 import { useSelector, useDispatch } from 'react-redux';
 import { loadData } from '../../redux/actions/actions';
 
+
 const StyledTableRow = withStyles((theme) => ({
   root: {
     '&:nth-of-type(odd)': {

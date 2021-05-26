@@ -8,6 +8,11 @@ import {
   PUT_DATA,
   LOAD_TICKETS,
   PUT_TICKETS,
+  ADD_TICKETS_ITEMS,
+  REMOVE_FILTER_MARK,
+  ADD_FILTER_MARK,
+  SET_TICKETS_TO_FILTER,
+  GET_FILTERED_TICKET
 } from '../types';
 
 export const login = () => {
@@ -65,3 +70,36 @@ export const optimalTicket = () => {
     type: OPTIMAL_TICKET,
   };
 };
+
+export const addTickets = () => {
+  return {
+    type: ADD_TICKETS_ITEMS
+  }
+}
+
+export const addFilterMark = (id) => {
+  return {
+    type: ADD_FILTER_MARK,
+    payload: id
+  }
+}
+
+export const removeFilterMark = (id) => {
+  return {
+    type: REMOVE_FILTER_MARK,
+    payload: id
+  }
+}
+
+export const setTicketsToFilter = () => {
+  return {
+    type: SET_TICKETS_TO_FILTER,
+  }
+}
+
+export const getFilteredTicket = () => {
+  return {
+    type: GET_FILTERED_TICKET
+  }
+}
+
