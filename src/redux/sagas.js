@@ -1,36 +1,7 @@
 import { takeEvery, put, call } from 'redux-saga/effects';
 import { LOAD_DATA, LOAD_TICKETS } from '../redux/types';
 import { putData, putTickets } from '../redux/actions/actions';
-
-function getResources(url) {
-  const data = fetch(url).then((response) => response.json());
-  return data;
-}
-
-function fetchTableData() {
-  const data = getResources('https://jsonplaceholder.typicode.com/users');
-  return data;
-}
-
-function fetchIdTicket() {
-  const data = getResources('https://front-test.beta.aviasales.ru/search');
-  return data;
-}
-
-async function fetchTicketsFromIdx() {
-  const res = await fetchIdTicket();
-  const id = res.searchId;
-  return await getResources(
-    `https://front-test.beta.aviasales.ru/tickets?searchId=${id}`
-  );
-}
-
-async function getObj() {
-  const meta = await fetchTicketsFromIdx();
-  return meta.tickets;
-}
-
-console.log(getObj());
+import { fetchTableData, fetchTicketsFromIdx } from '../services/index';
 
 export function* workedLoadData() {
   const dataTable = yield call(fetchTableData);

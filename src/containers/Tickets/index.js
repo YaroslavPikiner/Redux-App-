@@ -5,24 +5,15 @@ import { useSelector, useDispatch } from 'react-redux';
 import { loadTickets } from '../../redux/actions/actions';
 
 import './home.css';
-import { ArrowForwardIosTwoTone } from '@material-ui/icons';
 
 const Tickets = () => {
   const [listItem, setListItem] = useState(5);
   const [filters, setFilters] = useState([]);
   const [filteredTicket, setFilteredTicket] = useState([]);
-  const [ticketsItems, setTicketsItems] = useState([]);
-  const tickets = useSelector((state) => state.tableReducer.tickets);
   const dispatch = useDispatch();
-  console.log(ticketsItems);
-
-  const getObj = async () => {
-    const setTickets = await tickets.tickets;
-    return setTicketsItems(setTickets);
-  };
+  const ticketsItems = useSelector((state) => state.tableReducer.tickets);
 
   const addTicketItems = () => {
-    
     setListItem((prev) => (prev += 5));
   };
 
@@ -86,7 +77,7 @@ const Tickets = () => {
       }
     }
     setFilteredTicket([...result]);
-    setTicketsItems([...result]);
+    // setTicketsItems([...result]);
   };
 
   useEffect(() => {
@@ -95,7 +86,6 @@ const Tickets = () => {
 
   useEffect(() => {
     dispatch(loadTickets());
-    getObj();
   }, []);
 
   return (
