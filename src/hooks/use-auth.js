@@ -19,7 +19,6 @@ function useProvideAuth() {
   const signin = (email, password) => {
     if (email === 'user' && password === 'user') {
       dispatch(login());
-      localStorage.setItem('reactUser', JSON.stringify(true));
       return true;
     }
 
@@ -43,7 +42,6 @@ function useProvideAuth() {
 
   const signout = () => {
     dispatch(logout());
-    localStorage.setItem('reactUser', JSON.stringify(false));
   };
 
   return {

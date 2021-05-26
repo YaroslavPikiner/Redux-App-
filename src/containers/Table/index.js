@@ -35,7 +35,6 @@ const UserTable = () => {
 
   const [isFiltered, setIsFiltered] = useState(false);
   const [sortedField, setSortedField] = useState('');
-
   useEffect(() => {
       dispatch(loadData())
   }, []);
@@ -70,7 +69,6 @@ const UserTable = () => {
     } else {
       users.sort((a, b) => {
         console.log(field);
-
         let valueA = a[field.trim()].toLowerCase();
         let valueB = b[field.trim()].toLowerCase();
 
