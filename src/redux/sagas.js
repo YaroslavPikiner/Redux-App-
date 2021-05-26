@@ -1,7 +1,7 @@
 import { takeEvery, put, call } from 'redux-saga/effects';
-import { LOAD_DATA, LOAD_TICKETS } from '../redux/types';
-import { putData, putTickets } from '../redux/actions/actions';
-import { fetchTableData, fetchTicketsFromIdx } from '../services/index';
+import { LOAD_DATA, LOAD_TICKETS, SEND_USER, LOAD_USER  } from '../redux/types';
+import { putData, putTickets, saveUser, loadUser } from '../redux/actions/actions';
+import { fetchTableData, fetchTicketsFromIdx, saveUserQuery, loadTableUser } from '../services/index';
 
 export function* workedLoadData() {
   const dataTable = yield call(fetchTableData);
@@ -13,7 +13,21 @@ export function* workedLoadTickets() {
   yield put(putTickets(dataTickets));
 }
 
+export function* workedLoadUser(action) {
+  const dataUserTable = yield call(loadTableUser(action.payload),action.payload);
+  yield put(putTickets(dataUserTable));
+}
+
+export function* workedSaveUser(action) {
+  const savedUser = yield call(saveUserQuery,action.payload);
+  yield put(saveUser(savedUser));
+}
+
 export function* watchLoadData() {
   yield takeEvery(LOAD_DATA, workedLoadData);
   yield takeEvery(LOAD_TICKETS, workedLoadTickets);
+  yield takeEvery(SEND_USER, workedSaveUser);
+  yield takeEvery(LOAD_USER, workedLoadUser);
+
+
 }

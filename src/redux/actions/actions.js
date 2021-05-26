@@ -12,7 +12,11 @@ import {
   REMOVE_FILTER_MARK,
   ADD_FILTER_MARK,
   SET_TICKETS_TO_FILTER,
-  GET_FILTERED_TICKET
+  GET_FILTERED_TICKET,
+  SAVE_USER,
+  SEND_USER,
+  PUT_USER,
+  LOAD_USER
 } from '../types';
 
 export const login = () => {
@@ -40,9 +44,37 @@ export const putData = (dataFromServer) => {
   };
 };
 
+export const saveUser = (data) => {
+  return {
+    type: SAVE_USER,
+    payload: data
+  }
+}
+
+export const sendUser = (data) => {
+  return {
+    type: SEND_USER,
+    payload: data
+  }
+}
+
 export const loadTickets = () => {
   return {
     type: LOAD_TICKETS,
+  };
+};
+
+export const putUser = (dataFromServer) => {
+  return {
+    type: PUT_USER,
+    payload: dataFromServer
+  }
+}
+
+export const loadUser = (id) => {
+  return {
+    type: LOAD_USER,
+    payload: id
   };
 };
 

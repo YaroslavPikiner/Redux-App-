@@ -1,3 +1,5 @@
+
+
 const getResources = async (url) => {
     const data = await fetch(url).then((response) => response.json());
     return data;
@@ -20,4 +22,22 @@ export const fetchTicketsFromIdx = async () => {
         `https://front-test.beta.aviasales.ru/tickets?searchId=${id}`
     )
     return resTickets.tickets
+}
+
+export const saveUserQuery = async (user) => {
+    await fetch(`https://jsonplaceholder.typicode.com/posts`, {
+        method: 'POST',
+        body: JSON.stringify(user),
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+        },
+    })
+        .then((response) => response.json())
+        .then((json) => console.log(json));
+}
+
+export const loadTableUser = async (id) => {
+    const data = await getResources(`https://jsonplaceholder.typicode.com/users/${id}`);
+    return data;
+
 }
