@@ -32,6 +32,11 @@ export default function Header({ user, signout }) {
           {user ? (
             <>
               <Button color="inherit">
+                <Link to='/cinemabook' className='logo'>
+                  Cinema book
+                </Link>
+              </Button>
+              <Button color="inherit">
                 <Link to='/table' className='logo'>
                   Table
                 </Link>
