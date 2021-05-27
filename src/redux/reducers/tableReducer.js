@@ -1,5 +1,5 @@
 import { initState } from '../store/store';
-import { PUT_DATA, SAVE_USER, PUT_USER } from '../types';
+import { PUT_DATA, SAVE_USER, PUT_USER, LOAD_USER } from '../types';
 
 export const tableReducer = (state = initState, action) => {
   switch (action.type) {
@@ -9,16 +9,22 @@ export const tableReducer = (state = initState, action) => {
         table: action.payload,
       };
     }
+    case SAVE_USER: {
+      return {
+        ...state,
+        savedUser: action.payload
+      }
+    }
     case PUT_USER: {
       return {
         ...state,
         userId: action.payload,
       };
     }
-    case SAVE_USER: {
+    case LOAD_USER: {
       return {
         ...state,
-        savedUser: action.payload
+        userId: action.payload
       }
     }
   }
