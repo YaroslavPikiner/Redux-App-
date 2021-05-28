@@ -2,10 +2,9 @@ import Calendar from './components/calendar';
 import Box from '@material-ui/core/Box';
 import { makeStyles } from '@material-ui/core/styles';
 import FilmCard from './components/card';
-import { useState } from 'react'
+import { useState } from 'react';
 
 const useStyles = makeStyles((theme) => ({
-
     root: {
         marginTop: theme.spacing(4),
         display: 'flex',
@@ -17,84 +16,95 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const CinemaBook = () => {
-    const classes = useStyles()
-    const [time, setTime] = useState([
+    const date = new Date();
+    const classes = useStyles();
+    const [slots, setSlots] = useState([
         {
             slots: '10:00',
             id: '0',
-            isBooked: false
+            isBooked: false,
         },
         {
             slots: '12:00',
             id: '1',
-            isBooked: false
+            isBooked: false,
         },
         {
             slots: '14:00',
             id: '2',
-            isBooked: false
+            isBooked: false,
         },
         {
             slots: '16:00',
             id: '3',
-            isBooked: false
-        },
-        {
-            slots: '16:00',
-            id: '4',
-            isBooked: false
+            isBooked: false,
         },
         {
             slots: '18:00',
-            id: '5',
-            isBooked: false
+            id: '4',
+            isBooked: false,
         },
         {
             slots: '20:00',
-            id: '6',
-            isBooked: false
+            id: '5',
+            isBooked: false,
         },
-    ])
-    const [idx, setIdx] = useState([])
-    const [state, setState] = useState({})
-    const [times, setTimes] = useState({})
-    console.log(times)
-    const date = new Date();
+        {
+            slots: '22:00',
+            id: '6',
+            isBooked: false,
+        },
+    ]);
+    const [times, setTimes] = useState({});
+    const [index, setIndex] = useState([]);
+
     const handleChangeDate = (e) => {
         const datata = new Date(e);
-     
-        setTimes(prevState => ({
+        setTimes((prevState) => ({
             ...prevState,
             day: datata.getDate(),
             mounth: datata.getMonth(),
             year: datata.getFullYear(),
-        }))
-    }
+            time: slots,
+        }));
+    };
 
     const handleChangeTime = (e) => {
-        if (idx.includes(e.currentTarget.id)) {
-            setIdx((idx) => idx.filter((id) => id !== e.currentTarget.id));
-            time[e.currentTarget.id].isBooked = false
-            localStorage.setItem('slots', JSON.stringify(time[idx]))
+        let currentSlots = [...slots]
+        if (index.includes(e.currentTarget.id)) {
+            setIndex((index) => index.filter((id) => id !== e.currentTarget.id));
         } else {
-            setIdx((idx) => idx.concat(e.currentTarget.id));
-            time[e.currentTarget.id].isBooked = true
-            localStorage.setItem('slots', JSON.stringify(time[idx]))
+            setIndex((index) => index.concat(e.currentTarget.id));
         }
 
-    }
+        slots[e.currentTarget.id].isBooked = !slots[e.currentTarget.id].isBooked
+        setSlots(currentSlots)
+        localStorage.setItem('slots', JSON.stringify(slots))
+        setTimes((prevState) => ({
+            ...prevState,
+            time: currentSlots,
+        }));
+        console.log(times);
+    };
+
+    
+
+    console.log(index, 'index')
+    console.log(times, 'time')
+    console.log(slots, 'slots')
+
     return (
         <>
-            <Box className={classes.root} bgcolor='white' >
-                <Box p={1} >
+            <Box className={classes.root} bgcolor="white">
+                <Box p={1}>
                     <Calendar handleChangeDate={handleChangeDate} date={date} />
                 </Box>
-                <Box p={1} >
-                    <FilmCard time={time} handleChangeTime={handleChangeTime} />
+                <Box p={1}>
+                    <FilmCard time={JSON.parse(localStorage.getItem('slots'))} handleChangeTime={handleChangeTime} />
                 </Box>
             </Box>
         </>
-    )
-}
+    );
+};
 
-export default CinemaBook
+export default CinemaBook;
