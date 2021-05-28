@@ -10,6 +10,7 @@ import Login from '../containers/Login/index';
 import UserTable from '../containers/Table/index';
 import Tickets from '../containers/Tickets/index';
 import TableItem from '../containers/Table/components/tableItem/index';
+import CinemaBook from '../containers/CinemaBook/index';
 import { useAuth } from '../hooks/use-auth';
 
 
@@ -26,6 +27,7 @@ const Routes = () => {
                 <Route path='/table/:id' component={() => <TableItem user={user} />} />
                 <PrivateRoute exact user={user} path='/table' component={UserTable} />
                 <PrivateRoute user={user} path='/tickets' component={Tickets} />
+                <PrivateRoute user={user} path='/cinemabook' component={CinemaBook} />
             </Switch>
         </Router >
     )
