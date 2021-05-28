@@ -55,44 +55,36 @@ const CinemaBook = () => {
             isBooked: false,
         },
     ]);
+    const [times, setTimes] = useState({});
+    const [index, setIndex] = useState([]);
+    const [currDay, setCurrDay] = useState()
 
-    if(!JSON.parse(localStorage.getItem('slots'))) {
+    if (!JSON.parse(localStorage.getItem('slots'))) {
         (localStorage.setItem('slots', JSON.stringify(slots)))
     }
 
-
-    const [times, setTimes] = useState({});
-    const [index, setIndex] = useState([]);
-
     const handleChangeDate = (e) => {
-        const datata = new Date(e);
+        const currData = new Date(e);
         setTimes((prevState) => ({
             ...prevState,
-            day: datata.getDate(),
-            mounth: datata.getMonth(),
-            year: datata.getFullYear(),
+            day: currData.getDate(),
+            mounth: currData.getMonth(),
+            year: currData.getFullYear(),
             time: slots,
         }));
+        localStorage.setItem(String(currData.getDate()), JSON.stringify(times));
+        setCurrDay(JSON.parse(localStorage.getItem(currData.getDate())))
     };
 
     const handleChangeTime = (e) => {
         let currentSlots = [...slots]
-        if (index.includes(e.currentTarget.id)) {
-            setIndex((index) => index.filter((id) => id !== e.currentTarget.id));
-        } else {
-            setIndex((index) => index.concat(e.currentTarget.id));
-        }
         slots[e.currentTarget.id].isBooked = !slots[e.currentTarget.id].isBooked
-        setSlots(currentSlots)
-        localStorage.setItem('slots', JSON.stringify(slots))
         setTimes((prevState) => ({
             ...prevState,
             time: currentSlots,
         }));
-        console.log(times);
+        localStorage.setItem('slots', JSON.stringify(slots))
     };
-
-    
 
     console.log(index, 'index')
     console.log(times, 'time')
