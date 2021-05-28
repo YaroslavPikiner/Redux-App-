@@ -18,23 +18,71 @@ const useStyles = makeStyles((theme) => ({
 
 const CinemaBook = () => {
     const classes = useStyles()
-    const [time, setTime] = useState(['10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00'])
-    const [isDisabled, setIsDisabled] = useState(false)
+    const [time, setTime] = useState([
+        {
+            slots: '10:00',
+            id: '0',
+            isBooked: false
+        },
+        {
+            slots: '12:00',
+            id: '1',
+            isBooked: false
+        },
+        {
+            slots: '14:00',
+            id: '2',
+            isBooked: false
+        },
+        {
+            slots: '16:00',
+            id: '3',
+            isBooked: false
+        },
+        {
+            slots: '16:00',
+            id: '4',
+            isBooked: false
+        },
+        {
+            slots: '18:00',
+            id: '5',
+            isBooked: false
+        },
+        {
+            slots: '20:00',
+            id: '6',
+            isBooked: false
+        },
+    ])
     const [idx, setIdx] = useState([])
+    const [state, setState] = useState({})
+    const [times, setTimes] = useState({})
+    console.log(times)
     const date = new Date();
-
     const handleChangeDate = (e) => {
-        console.log(e)
+        const datata = new Date(e);
+     
+        setTimes(prevState => ({
+            ...prevState,
+            day: datata.getDate(),
+            mounth: datata.getMonth(),
+            year: datata.getFullYear(),
+        }))
     }
 
     const handleChangeTime = (e) => {
         if (idx.includes(e.currentTarget.id)) {
             setIdx((idx) => idx.filter((id) => id !== e.currentTarget.id));
+            time[e.currentTarget.id].isBooked = false
+            localStorage.setItem('slots', JSON.stringify(time[idx]))
         } else {
             setIdx((idx) => idx.concat(e.currentTarget.id));
+            time[e.currentTarget.id].isBooked = true
+            localStorage.setItem('slots', JSON.stringify(time[idx]))
         }
+
     }
-    console.log(idx)
     return (
         <>
             <Box className={classes.root} bgcolor='white' >
@@ -42,7 +90,7 @@ const CinemaBook = () => {
                     <Calendar handleChangeDate={handleChangeDate} date={date} />
                 </Box>
                 <Box p={1} >
-                    <FilmCard isDisabled={isDisabled} time={time} handleChangeTime={handleChangeTime} />
+                    <FilmCard time={time} handleChangeTime={handleChangeTime} />
                 </Box>
             </Box>
         </>

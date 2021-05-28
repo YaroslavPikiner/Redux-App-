@@ -1,11 +1,10 @@
 import Button from '@material-ui/core/Button';
 
-const Slots = ({ time, handleChangeTime, isDisabled }) => {
-
+const Slots = ({ time, handleChangeTime }) => {
     return (
         <>
-            {time.map((slot, i) => {
-                return <Button disabled={isDisabled} onClick={(e) => handleChangeTime(e)} key={i} id={i} >{slot}</Button>
+            {time.map(item => {
+                return <Button variant={item.isBooked ? 'contained' : 'outlined'} onClick={(e) => handleChangeTime(e)} key={item.id} id={item.id} >{item.slots}</Button>
             })}
         </>
     )
