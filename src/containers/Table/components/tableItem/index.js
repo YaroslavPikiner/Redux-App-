@@ -44,9 +44,8 @@ const useStyles = makeStyles((theme) => ({
 const TableItem = ({ user }) => {
     const classes = useStyles();
     const history = useHistory();
-    // const [userId, setUserId] = useState([])
+    const [userId, setUserId] = useState([])
     const dispatch = useDispatch()
-    const userId = useSelector((state) => state.tableReducer.userId)
     const loc = useLocation();
 
     console.log(userId)
@@ -56,12 +55,10 @@ const TableItem = ({ user }) => {
     } = useForm();
 
     useEffect(() => {
-        dispatch(loadUser(loc.pathname.slice(7)))
-
-        // fetch(`https://jsonplaceholder.typicode.com/users/${loc.pathname.slice(7)}`)
-        //     .then((response) => response.json())
-        //     .then((data) => setUserId(data))
-        //     .catch((error) => console.log(error.message));
+        fetch(`https://jsonplaceholder.typicode.com/users/${loc.pathname.slice(7)}`)
+            .then((response) => response.json())
+            .then((data) => setUserId(data))
+            .catch((error) => console.log(error.message));
 
     }, []);
 
