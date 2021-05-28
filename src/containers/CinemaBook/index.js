@@ -55,6 +55,12 @@ const CinemaBook = () => {
             isBooked: false,
         },
     ]);
+
+    if(!JSON.parse(localStorage.getItem('slots'))) {
+        (localStorage.setItem('slots', JSON.stringify(slots)))
+    }
+
+
     const [times, setTimes] = useState({});
     const [index, setIndex] = useState([]);
 
@@ -76,7 +82,6 @@ const CinemaBook = () => {
         } else {
             setIndex((index) => index.concat(e.currentTarget.id));
         }
-
         slots[e.currentTarget.id].isBooked = !slots[e.currentTarget.id].isBooked
         setSlots(currentSlots)
         localStorage.setItem('slots', JSON.stringify(slots))
