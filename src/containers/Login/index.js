@@ -6,6 +6,8 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { useAuth } from '../../hooks/use-auth';
 import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import GoogleLogin from 'react-google-login';
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -15,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
         alignItems: 'center',
     },
     submit: {
-        margin: theme.spacing(3, 0, 2),
+        margin: theme.spacing(3),
     },
     form: {
         width: '100%', // Fix IE 11 issue.
@@ -37,7 +39,7 @@ const Login = () => {
         handleSubmit,
         formState: { errors },
     } = useForm();
-
+    const dispatch = useDispatch();
 
     const onSubmit = (data) => {
         let status = auth.signin(data.login, data.password);
@@ -45,12 +47,22 @@ const Login = () => {
             history.push("/table");
         }
     };
-
+    const responseGoogle = (response) => {
+        console.log(response);
+    }
     return (
         <div className={classes.paper} >
             <Avatar className={classes.avatar}>
                 <LockOutlinedIcon />
             </Avatar>
+            <GoogleLogin
+                clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
+                buttonText="Login via Google"
+                onSuccess={responseGoogle}
+                onFailure={responseGoogle}
+                cookiePolicy={'single_host_origin'}
+            />
+            <p>OR</p>
             <form className={classes.root} onSubmit={handleSubmit(onSubmit)}>
                 <TextField
                     fullWidth
@@ -74,7 +86,7 @@ const Login = () => {
                     variant="contained"
                     color="primary"
                     className={classes.submit}>
-                    Submit
+                    Login
                 </Button>
             </form>
         </div>
