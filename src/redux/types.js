@@ -15,5 +15,5 @@ export const GET_FILTERED_TICKET = 'GET_FILTERED_TICKET';
 export const SAVE_USER = 'SAVE_USER';
 export const SEND_USER = 'SEND_USER';
 export const LOAD_USER = 'LOAD_USER';
-export const PUT_USER = 'PUT_USER';
+export const GET_USER_NAME = 'GET_USER_NAME';
 

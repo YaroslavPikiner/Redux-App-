@@ -15,8 +15,7 @@ import {
   GET_FILTERED_TICKET,
   SAVE_USER,
   SEND_USER,
-  PUT_USER,
-  LOAD_USER
+  GET_USER_NAME
 } from '../types';
 
 export const login = () => {
@@ -58,23 +57,16 @@ export const sendUser = (data) => {
   }
 }
 
+export const getUserInfoFromGoogle = (userInfo) => {
+  return {
+    type: GET_USER_NAME,
+    payload: userInfo
+  }
+} 
+
 export const loadTickets = () => {
   return {
     type: LOAD_TICKETS,
-  };
-};
-
-export const putUser = (dataFromServer) => {
-  return {
-    type: PUT_USER,
-    payload: dataFromServer
-  }
-}
-
-export const loadUser = (id) => {
-  return {
-    type: LOAD_USER,
-    payload: id
   };
 };
 

@@ -8,6 +8,7 @@ import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import GoogleLogin from 'react-google-login';
+import { login, getUserInfoFromGoogle } from '../../redux/actions/actions';
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -17,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
         alignItems: 'center',
     },
     submit: {
-        margin: theme.spacing(3),
+        margin: theme.spacing(3, 0, 2),
     },
     form: {
         width: '100%', // Fix IE 11 issue.
@@ -34,21 +35,25 @@ const Login = () => {
     const classes = useStyles();
     const history = useHistory();
     const auth = useAuth();
+    const dispatch = useDispatch();
     const {
         register,
         handleSubmit,
         formState: { errors },
     } = useForm();
-    const dispatch = useDispatch();
 
     const onSubmit = (data) => {
         let status = auth.signin(data.login, data.password);
         if (status) {
-            history.push("/table");
+            history.push("/");
         }
     };
     const responseGoogle = (response) => {
-        console.log(response);
+        if (response) {
+            history.push("/");
+            dispatch(login());
+            dispatch(getUserInfoFromGoogle(response))
+        }
     }
     return (
         <div className={classes.paper} >

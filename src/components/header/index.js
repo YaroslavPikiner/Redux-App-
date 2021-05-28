@@ -11,7 +11,7 @@ const useStyles = makeStyles(() => ({
   },
   title: {
     flexGrow: 1,
-  },
+  }, 
 }));
 
 export default function Header({ user, signout }) {
@@ -42,7 +42,7 @@ export default function Header({ user, signout }) {
                 </Link>
               </Button>
               <Button color="inherit">
-                <Link to='/' onClick={signout} className='nav-visible-seach button'>
+                <Link to='/login' onClick={signout} className='nav-visible-seach button'>
                   Logout
                 </Link>
               </Button>

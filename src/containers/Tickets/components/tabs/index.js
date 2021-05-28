@@ -9,14 +9,11 @@ const useStyles = makeStyles((theme) => ({
     btn: {
         backgroundColor: theme.palette.primary.main,
         color: 'white',
-        width: 160,
-        heigth: 50
+        width: 165,
+        heigth: 60
     },
     customWidth: {
         maxWidth: 500,
-    },
-    noMaxWidth: {
-        maxWidth: 'none',
     },
 }));
 

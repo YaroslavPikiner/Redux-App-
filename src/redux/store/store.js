@@ -5,6 +5,7 @@ export const initState = {
   table: [],
   savedUser: null,
   userId: [],
+  userGoogleInfo: null,
   user: JSON.parse(localStorage.getItem('reactUser')),
   listItem: 5,
 };
