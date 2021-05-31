@@ -7,7 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Slots from '../slots'
 
-const FilmCard = ({time, handleChangeTime, isDisabled}) => {
+const FilmCard = ({currentDay, handleChangeTime, isDisabled}) => {
 
   return (
     <Card sx={{ maxWidth: 500 }}>
@@ -15,12 +15,12 @@ const FilmCard = ({time, handleChangeTime, isDisabled}) => {
         component="img"
         alt="Contemplative Reptile"
         height="140"
-        image="https://www.tourdom.ru/upload/iblock/c64/c6409a8ca01ce789ad8d541dc7e87f4c.jpeg"
+        image="https://m.media-amazon.com/images/M/MV5BYTRiNDQwYzAtMzVlZS00NTI5LWJjYjUtMzkwNTUzMWMxZTllXkEyXkFqcGdeQXVyNDIzMzcwNjc@._V1_UY268_CR7,0,182,268_AL_.jpg"
         title="Contemplative Reptile"
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          Borat
+          Game of Thrones
         </Typography>
         <Typography variant="body2" color="text.secondary">
           Borat leaves his native Kazakhstan and is sent by order of the "Ministry of Information of Kazakhstan"
@@ -31,7 +31,7 @@ const FilmCard = ({time, handleChangeTime, isDisabled}) => {
       </CardContent>
       <CardActions>
         <ButtonGroup size="large" color="primary" aria-label="large outlined primary button group">
-          <Slots isDisabled={isDisabled} time={time} handleChangeTime={handleChangeTime}/>
+          <Slots isDisabled={isDisabled} currentDay={currentDay} handleChangeTime={handleChangeTime}/>
         </ButtonGroup>
       </CardActions>
     </Card>
