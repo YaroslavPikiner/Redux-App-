@@ -22,33 +22,28 @@ const CinemaBook = () => {
   const [datas, setDatas] = useState([]);
   const [currentDay, setCurrentDay] = useState({});
 
-  if (!JSON.parse(localStorage.getItem('datas'))) {
-    localStorage.setItem('datas', JSON.stringify(datas));
-  }
-
-  useEffect(() => {
-    if(JSON.parse(localStorage.getItem('datas'))) {
-      setDatas(JSON.parse(localStorage.getItem('datas')))
-    } else {
-      setDatas(addingDays())
-    }
-    
-  }, []);
-
   useEffect(() => {
     datas.forEach((item) => {
-      if (item.date == date) {
+      if (new Date(item.date).getDate() == date.getDate()) {
         setCurrentDay(item);
-        console.log(item);
-      }
+      } 
     });
   }, [datas]);
+
+  useEffect(() => {
+    if (!JSON.parse(localStorage.getItem('datas'))) {
+      setDatas(addingDays());
+    } else {
+      setDatas(JSON.parse(localStorage.getItem('datas')));
+    }
+  }, []);
+
+
 
   const handleChangeDate = (e) => {
     datas.forEach((item) => {
       if (new Date(item.date).getDate() == new Date(e).getDate()) {
         setCurrentDay(item);
-        console.log(item.date);
       } else {
         return null;
       }
@@ -64,11 +59,8 @@ const CinemaBook = () => {
     setCurrentDay((prevState) => ({
       ...prevState,
       currentSlots,
-    }))
-      localStorage.setItem(
-        'datas',
-        JSON.stringify(datas)
-      )
+    }));
+    localStorage.setItem('datas', JSON.stringify(datas));
   };
   console.log(currentDay, 'currDay');
   console.log(datas);

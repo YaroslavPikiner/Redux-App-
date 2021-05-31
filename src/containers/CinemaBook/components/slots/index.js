@@ -2,6 +2,7 @@ import Button from '@material-ui/core/Button';
 import Loader from 'react-loader-spinner';
 
 const Slots = ({ currentDay, handleChangeTime }) => {
+  console.log(currentDay)
   return (
     <>
       {currentDay.slots ? (
