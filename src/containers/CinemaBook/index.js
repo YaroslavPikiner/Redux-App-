@@ -20,12 +20,7 @@ const CinemaBook = () => {
   const date = new Date();
   const classes = useStyles();
   const [datas, setDatas] = useState([]);
-  const [currentDay, setCurrentDay] = useState([]);
-
-  const res1 = () => {datas.map((item) =>
-    item.date.includes(date) ? setCurrentDay(item) : null
-  )};
-  console.log(currentDay);
+  const [currentDay, setCurrentDay] = useState({});
 
   if (!JSON.parse(localStorage.getItem('slots'))) {
     localStorage.setItem('slots', JSON.stringify(datas));
@@ -35,16 +30,30 @@ const CinemaBook = () => {
     setDatas(addingDays());
   }, []);
 
+  useEffect(() => {
+    datas.map((item) => (item.date.includes(date) ? setCurrentDay(item) : {}));
+  }, [datas]);
+
+  console.log(currentDay, 'currDay');
+
   const handleChangeDate = (e) => {
     const res = datas.map((item) =>
       item.date.includes(new Date(e) ? setCurrentDay(item) : null)
     );
-    console.log(currentDay);
     return res;
   };
 
   const handleChangeTime = (e) => {
-    console.log(e.currentTarget.id);
+    let currentSlots = [...currentDay.slots];
+    console.log(currentSlots);
+    if (currentDay.slots.filter((id) => id === e.currentTarget.id)) {
+      currentDay.slots[e.currentTarget.id].isBooked =
+        !currentDay.slots[e.currentTarget.id].isBooked;
+    }
+    setCurrentDay((prevState) => ({
+      ...prevState,
+      currentSlots,
+    }));
   };
 
   return (
@@ -66,31 +75,3 @@ const CinemaBook = () => {
 
 export default CinemaBook;
 
-// const handleChangeDate = (e) => {
-//     const currData = new Date(e);
-//     setTimes((prevState) => ({
-//       ...prevState,
-//       day: currData.getDate(),
-//       mounth: currData.getMonth(),
-//       year: currData.getFullYear(),
-//       time: slots,
-//     }));
-//     localStorage.setItem(String(currData.getDate()), JSON.stringify(times));
-//     setCurrDay(JSON.parse(localStorage.getItem(currData.getDate())));
-//   };
-
-//   const handleChangeTime = (e) => {
-//     let currentSlots = [...slots];
-//     if (index.includes(e.currentTarget.id)) {
-//       setIndex((index) => index.filter((id) => id !== e.currentTarget.id));
-//     } else {
-//       setIndex((index) => index.concat(e.currentTarget.id));
-//     }
-//     slots[e.currentTarget.id].isBooked = !slots[e.currentTarget.id].isBooked;
-//     setSlots(currentSlots);
-//     localStorage.setItem('slots', JSON.stringify(slots));
-//     setTimes((prevState) => ({
-//       ...prevState,
-//       time: currentSlots,
-//     }));
-//   };

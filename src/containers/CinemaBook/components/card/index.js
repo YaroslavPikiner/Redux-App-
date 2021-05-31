@@ -8,7 +8,6 @@ import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Slots from '../slots'
 
 const FilmCard = ({currentDay, handleChangeTime, isDisabled}) => {
-
   return (
     <Card sx={{ maxWidth: 500 }}>
       <CardMedia

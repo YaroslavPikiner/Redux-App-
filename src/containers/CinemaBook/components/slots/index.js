@@ -1,15 +1,32 @@
 import Button from '@material-ui/core/Button';
+import Loader from 'react-loader-spinner';
 
 const Slots = ({ currentDay, handleChangeTime }) => {
-    console.log(currentDay);
-    return (
-        <>
-            {/* {time ? time.map(item => {
-                return <Button variant={item.slots.isBooked ? 'contained' : 'outlined'} onClick={(e) => handleChangeTime(e)} key={item.id} id={item.id}>{item.timeslot}: 00</Button>
-            }) :  <h1>alalal</h1>} */}
-           
-        </>
-    )
-}
+  return (
+    <>
+      {currentDay.slots ? (
+        currentDay.slots.map((slot) => {
+          return (
+            <Button
+              variant={slot.isBooked ? 'contained' : 'outlined'}
+              key={slot.id}
+              id={slot.id}
+              onClick={(e) => handleChangeTime(e)}>
+              {slot.timeslot}:00
+            </Button>
+          );
+        })
+      ) : (
+        <Loader
+          type='Puff'
+          color='#00BFFF'
+          height={100}
+          width={100}
+          timeout={3000} //3 secs
+        />
+      )}
+    </>
+  );
+};
 
 export default Slots;
