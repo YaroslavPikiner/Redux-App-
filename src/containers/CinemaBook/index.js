@@ -22,30 +22,41 @@ const CinemaBook = () => {
   const [datas, setDatas] = useState([]);
   const [currentDay, setCurrentDay] = useState({});
 
-  if (!JSON.parse(localStorage.getItem('slots'))) {
-    localStorage.setItem('slots', JSON.stringify(datas));
+  if (!JSON.parse(localStorage.getItem('datas'))) {
+    localStorage.setItem('datas', JSON.stringify(datas));
   }
 
   useEffect(() => {
-    setDatas(addingDays());
+    if(JSON.parse(localStorage.getItem('datas'))) {
+      setDatas(JSON.parse(localStorage.getItem('datas')))
+    } else {
+      setDatas(addingDays())
+    }
+    
   }, []);
 
   useEffect(() => {
-    datas.map((item) => (item.date.includes(date) ? setCurrentDay(item) : {}));
+    datas.forEach((item) => {
+      if (item.date == date) {
+        setCurrentDay(item);
+        console.log(item);
+      }
+    });
   }, [datas]);
 
-  console.log(currentDay, 'currDay');
-
   const handleChangeDate = (e) => {
-    const res = datas.map((item) =>
-      item.date.includes(new Date(e) ? setCurrentDay(item) : null)
-    );
-    return res;
+    datas.forEach((item) => {
+      if (new Date(item.date).getDate() == new Date(e).getDate()) {
+        setCurrentDay(item);
+        console.log(item.date);
+      } else {
+        return null;
+      }
+    });
   };
 
   const handleChangeTime = (e) => {
     let currentSlots = [...currentDay.slots];
-    console.log(currentSlots);
     if (currentDay.slots.filter((id) => id === e.currentTarget.id)) {
       currentDay.slots[e.currentTarget.id].isBooked =
         !currentDay.slots[e.currentTarget.id].isBooked;
@@ -53,8 +64,14 @@ const CinemaBook = () => {
     setCurrentDay((prevState) => ({
       ...prevState,
       currentSlots,
-    }));
+    }))
+      localStorage.setItem(
+        'datas',
+        JSON.stringify(datas)
+      )
   };
+  console.log(currentDay, 'currDay');
+  console.log(datas);
 
   return (
     <>
@@ -74,4 +91,3 @@ const CinemaBook = () => {
 };
 
 export default CinemaBook;
-

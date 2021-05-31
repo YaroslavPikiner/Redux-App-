@@ -13,7 +13,7 @@ export const addingDays = () => {
         .map((item, id) => ({
           timeslot: item,
           id: id,
-          isBooked: false,
+          isAvailable: true,
         })),
       isEditable: getDate(addDays(new Date(), i - 8)) >= getDate(new Date()),
       isCurrent: getDate(addDays(new Date(), i - 8)) === getDate(new Date()),
