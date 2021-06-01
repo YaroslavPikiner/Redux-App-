@@ -1,5 +1,5 @@
 const Charts = () => {
-    return <h1>Charts</h1>
+    return <canvas id="myChart" width="400" height="400"></canvas>
 }
 
 export default Charts;

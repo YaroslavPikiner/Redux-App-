@@ -8,7 +8,7 @@ import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import GoogleLogin from 'react-google-login';
-import { login, getUserInfoFromGoogle } from '../../redux/actions/actions';
+import { login, getUserInfoFromGoogle } from '../../redux/actions/login';
 
 const useStyles = makeStyles((theme) => ({
     paper: {

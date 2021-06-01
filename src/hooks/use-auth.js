@@ -1,6 +1,6 @@
 import React, { useContext, createContext } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { login, logout } from '../redux/actions/actions';
+import { login, logout } from '../redux/actions/login';
 
 const authContext = createContext();
 export function ProvideAuth({ children }) {

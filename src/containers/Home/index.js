@@ -33,9 +33,6 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.paper,
     padding: theme.spacing(8, 0, 6),
   },
-  heroButtons: {
-    marginTop: theme.spacing(4),
-  },
   cardGrid: {
     paddingTop: theme.spacing(8),
     paddingBottom: theme.spacing(8),
@@ -57,6 +54,9 @@ const useStyles = makeStyles((theme) => ({
   },
   root: {
     margin: '20px auto'
+  },
+  btns: {
+    margin: '0 auto'
   }
 }));
 
@@ -95,8 +95,7 @@ function Home() {
               contents, the creator, etc. Make it short and sweet, but not too
               short so folks don&apos;t simply skip over it entirely.
             </Typography>
-            <div className={classes.heroButtons}>
-              <Grid container spacing={2} justify='center'>
+              <Grid className={classes.btns} container justify="center" spacing={2}>
                 <Grid item>
                   <Button variant='contained' color='primary'>
                     Main call to action
@@ -108,7 +107,6 @@ function Home() {
                   </Button>
                 </Grid>
               </Grid>
-            </div>
           </Container>
         </div>
         <Container className={classes.cardGrid} maxWidth='md'>

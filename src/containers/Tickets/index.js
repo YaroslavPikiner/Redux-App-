@@ -5,8 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
   loadTickets, addTickets, addFilterMark,
   removeFilterMark, setTicketsToFilter, getFilteredTicket, cheapTicket, fastTicket, optimalTicket
-} from '../../redux/actions/actions';
-
+} from '../../redux/actions/tickets';
 import './home.css';
 
 const Tickets = () => {

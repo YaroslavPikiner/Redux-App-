@@ -10,7 +10,7 @@ import TableRow from '@material-ui/core/TableRow';
 import HeaderTitle from './components/headerTitle';
 import TableData from './components/tableData';
 import { useSelector, useDispatch } from 'react-redux';
-import { loadData } from '../../redux/actions/actions';
+import { loadData } from '../../redux/actions/table';
 
 
 const StyledTableRow = withStyles((theme) => ({

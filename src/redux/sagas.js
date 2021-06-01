@@ -1,6 +1,8 @@
 import { takeEvery, put, call } from 'redux-saga/effects';
 import { LOAD_DATA, LOAD_TICKETS, SEND_USER, LOAD_USER } from '../redux/types';
-import { putData, putTickets, saveUser } from '../redux/actions/actions';
+import { putTickets, saveUser } from '../redux/actions/tickets';
+import { putData } from '../redux/actions/table';
+
 import { fetchTableData, fetchTicketsFromIdx, saveUserQuery, loadTableUser } from '../services/index';
 
 export function* workedLoadData() {

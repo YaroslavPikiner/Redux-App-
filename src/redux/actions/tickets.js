@@ -1,11 +1,7 @@
 import {
-  SIGN_OUT,
-  SIGN_IN,
   CHEAP_TICKET,
   FAST_TICKET,
   OPTIMAL_TICKET,
-  LOAD_DATA,
-  PUT_DATA,
   LOAD_TICKETS,
   PUT_TICKETS,
   ADD_TICKETS_ITEMS,
@@ -14,34 +10,8 @@ import {
   SET_TICKETS_TO_FILTER,
   GET_FILTERED_TICKET,
   SAVE_USER,
-  SEND_USER,
-  GET_USER_NAME
 } from '../types';
 
-export const login = () => {
-  return {
-    type: SIGN_IN,
-  };
-};
-
-export const logout = () => {
-  return {
-    type: SIGN_OUT,
-  };
-};
-
-export const loadData = () => {
-  return {
-    type: LOAD_DATA,
-  };
-};
-
-export const putData = (dataFromServer) => {
-  return {
-    type: PUT_DATA,
-    payload: dataFromServer,
-  };
-};
 
 export const saveUser = (data) => {
   return {
@@ -50,19 +20,7 @@ export const saveUser = (data) => {
   }
 }
 
-export const sendUser = (data) => {
-  return {
-    type: SEND_USER,
-    payload: data
-  }
-}
 
-export const getUserInfoFromGoogle = (userInfo) => {
-  return {
-    type: GET_USER_NAME,
-    payload: userInfo
-  }
-} 
 
 export const loadTickets = () => {
   return {

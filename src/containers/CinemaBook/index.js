@@ -38,8 +38,6 @@ const CinemaBook = () => {
     }
   }, []);
 
-
-
   const handleChangeDate = (e) => {
     datas.forEach((item) => {
       if (new Date(item.date).getDate() == new Date(e).getDate()) {
@@ -62,8 +60,6 @@ const CinemaBook = () => {
     }));
     localStorage.setItem('datas', JSON.stringify(datas));
   };
-  console.log(currentDay, 'currDay');
-  console.log(datas);
 
   return (
     <>
