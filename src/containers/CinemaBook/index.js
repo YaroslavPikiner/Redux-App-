@@ -26,7 +26,7 @@ const CinemaBook = () => {
     datas.forEach((item) => {
       if (new Date(item.date).getDate() == date.getDate()) {
         setCurrentDay(item);
-      } 
+      }
     });
   }, [datas]);
 
@@ -50,17 +50,13 @@ const CinemaBook = () => {
 
   const handleChangeTime = (e) => {
     let currentSlots = [...currentDay.slots];
-
     if (currentDay.slots.filter((id) => id === e.currentTarget.id)) {
       currentDay.slots[e.currentTarget.id].isBooked = !currentDay.slots[e.currentTarget.id].isBooked;
     }
 
-    setCurrentDay((prevState) => ({
-      ...prevState,
-      currentSlots,
-    }));
-    localStorage.setItem('datas', 
-    JSON.stringify(datas));
+    setCurrentDay((prevState) => ({ ...prevState, currentSlots }));
+
+    localStorage.setItem('datas', JSON.stringify(datas));
   };
 
   return (

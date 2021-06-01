@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import { Bar, Line, Pie } from 'react-chartjs-2';
+import { Bar, Line, Pie, Radar, PolarArea } from 'react-chartjs-2';
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import { useDispatch, useSelector } from 'react-redux';
@@ -19,7 +19,6 @@ const Charts = () => {
   const tabsName = ['Randomize', 'Add', 'Remove'];
   const dispatch = useDispatch();
   const data = useSelector((state) => state.chartReducer.data);
-  console.log(data);
 
   const getValueCharts = (e) => {
     switch (e.currentTarget.value) {
@@ -54,6 +53,22 @@ const Charts = () => {
         </Grid>
         <Grid item>
           <Pie
+            height={500}
+            width={600}
+            data={data}
+            options={{ maintainAspectRatio: false }}
+          />
+        </Grid>
+        <Grid item>
+          <Radar
+            height={500}
+            width={600}
+            data={data}
+            options={{ maintainAspectRatio: false }}
+          />
+        </Grid>
+        <Grid item>
+          <PolarArea
             height={500}
             width={600}
             data={data}
