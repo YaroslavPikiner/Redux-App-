@@ -1,7 +1,6 @@
-import { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import { Bar } from 'react-chartjs-2';
+import { Bar, Line, Pie } from 'react-chartjs-2';
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import { useDispatch, useSelector } from 'react-redux';
@@ -39,6 +38,22 @@ const Charts = () => {
       <Grid container className={classes.root}>
         <Grid item>
           <Bar
+            height={500}
+            width={600}
+            data={data}
+            options={{ maintainAspectRatio: false }}
+          />
+        </Grid>
+        <Grid item>
+          <Line
+            height={500}
+            width={600}
+            data={data}
+            options={{ maintainAspectRatio: false }}
+          />
+        </Grid>
+        <Grid item>
+          <Pie
             height={500}
             width={600}
             data={data}
