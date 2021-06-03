@@ -7,7 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Slots from '../slots'
 
-const FilmCard = ({currentDay, handleChangeTime, isDisabled}) => {
+const FilmCard = ({ currentDay, handleChangeTime, isDisabled }) => {
   return (
     <Card sx={{ maxWidth: 500 }}>
       <CardMedia
@@ -30,7 +30,7 @@ const FilmCard = ({currentDay, handleChangeTime, isDisabled}) => {
       </CardContent>
       <CardActions>
         <ButtonGroup size="large" color="primary" aria-label="large outlined primary button group">
-          <Slots isDisabled={isDisabled} currentDay={currentDay} handleChangeTime={handleChangeTime}/>
+          <Slots isDisabled={isDisabled} currentDay={currentDay} handleChangeTime={handleChangeTime} />
         </ButtonGroup>
       </CardActions>
     </Card>

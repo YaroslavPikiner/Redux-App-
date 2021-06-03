@@ -25,7 +25,7 @@ const TicketList = ({
     <>
       <div className='ticketList'>
         <Tabs getValueFromToolBar={getValueFromToolBar} />
-        {filteredTicket ? 
+        {filteredTicket ?
           filteredTicket
             .slice(0, listItem)
             .map((item) => <Ticket key={item.price} item={item} />) : loader}

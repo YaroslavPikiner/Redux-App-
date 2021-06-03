@@ -1,30 +1,29 @@
 .tab__container {
-    margin-bottom: 20px;
+	margin-bottom: 20px;
 }
 
 .btn {
-    width: 168px;
-    height: 50px;
-    margin: 0;
-    text-align: center;
-    text-transform: uppercase;
-    border: none;
-    transition: all .2s;
-    background: #FFFFFF;
-    color: #4A4A4A;
+	width: 168px;
+	height: 50px;
+	margin: 0;
+	text-align: center;
+	text-transform: uppercase;
+	border: none;
+	transition: all 0.2s;
+	background: #ffffff;
+	color: #4a4a4a;
 }
 
 .btn:hover {
-    color: #fff;
-    background-color: #2196F3;
-    cursor: pointer;
-
+	color: #fff;
+	background-color: #2196f3;
+	cursor: pointer;
 }
 
 .btn:first-child {
-    border-top-left-radius: 5px;
+	border-top-left-radius: 5px;
 }
 
 .btn:last-child {
-    border-top-right-radius: 5px;
+	border-top-right-radius: 5px;
 }

@@ -1,18 +1,18 @@
 .home {
-    display: flex;
-    justify-content: center;
+	display: flex;
+	justify-content: center;
 }
 
 .logo__plane {
-    background: url('../../img/Logo.svg');
-    object-fit: cover;
-    background-size: cover;
-    width: 80px;
-    height: 80px;
-    transition: all 2s;
-    margin: 40px auto;
+	background: url('../../img/Logo.svg');
+	object-fit: cover;
+	background-size: cover;
+	width: 80px;
+	height: 80px;
+	transition: all 2s;
+	margin: 40px auto;
 }
 
 .logo__plane:hover {
-    transform: rotate(720deg)
+	transform: rotate(720deg);
 }

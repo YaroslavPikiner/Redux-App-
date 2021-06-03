@@ -95,18 +95,18 @@ function Home() {
               contents, the creator, etc. Make it short and sweet, but not too
               short so folks don&apos;t simply skip over it entirely.
             </Typography>
-              <Grid className={classes.btns} container justify="center" spacing={2}>
-                <Grid item>
-                  <Button variant='contained' color='primary'>
-                    Main call to action
-                  </Button>
-                </Grid>
-                <Grid item>
-                  <Button variant='outlined' color='primary'>
-                    Secondary action
-                  </Button>
-                </Grid>
+            <Grid className={classes.btns} container justify="center" spacing={2}>
+              <Grid item>
+                <Button variant='contained' color='primary'>
+                  Main call to action
+                </Button>
               </Grid>
+              <Grid item>
+                <Button variant='outlined' color='primary'>
+                  Secondary action
+                </Button>
+              </Grid>
+            </Grid>
           </Container>
         </div>
         <Container className={classes.cardGrid} maxWidth='md'>

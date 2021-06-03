@@ -37,7 +37,7 @@ export const chartReducer = (state = initState, action) => {
       return {
         ...state,
         data: {
-            labels: state.data.labels.filter(
+          labels: state.data.labels.filter(
             (item) => item !== state.data.labels.length - 1
           ),
           datasets: [
@@ -54,10 +54,10 @@ export const chartReducer = (state = initState, action) => {
       return {
         ...state,
         data: {
-            labels: [...state.data.labels, state.lengthOfChartLabel],
+          labels: [...state.data.labels, state.lengthOfChartLabel],
           datasets: [
             {
-              data: Array.from({ length: {...state.lengthOfChartLabel + 1}}, () =>
+              data: Array.from({ length: { ...state.lengthOfChartLabel + 1 } }, () =>
                 Math.floor(Math.random() * 40)
               ),
             },

@@ -16,7 +16,6 @@ export const SAVE_USER = 'SAVE_USER';
 export const SEND_USER = 'SEND_USER';
 export const LOAD_USER = 'LOAD_USER';
 export const GET_USER_NAME = 'GET_USER_NAME';
-
 export const RANDOMIZE_CHART = 'RANDOMIZE_CHART'
 export const ADD_ITEM = 'ADD_ITEM'
 export const REMOVE_ITEM = 'REMOVE_ITEM'

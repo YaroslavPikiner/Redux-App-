@@ -14,8 +14,8 @@ export const putData = (dataFromServer) => {
 };
 
 export const sendUser = (data) => {
-    return {
-      type: SEND_USER,
-      payload: data
-    }
+  return {
+    type: SEND_USER,
+    payload: data
   }
+}

@@ -36,7 +36,7 @@ const UserTable = () => {
   const [isFiltered, setIsFiltered] = useState(false);
   const [sortedField, setSortedField] = useState('');
   useEffect(() => {
-      dispatch(loadData())
+    dispatch(loadData())
   }, []);
 
   const createData = (id, name, username, email, phone, website) => {

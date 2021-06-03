@@ -24,9 +24,9 @@ const TableData = ({ handleSort, sortedField, isFiltered }) => {
                 onClick={() => handleSort(item)}>
                 {sortedField === item.toLowerCase() ?
                     <>
-                    {item} {isFiltered ? <ArrowDownwardIcon/> : <ArrowUpwardIcon/>}</> :
+                        {item} {isFiltered ? <ArrowDownwardIcon /> : <ArrowUpwardIcon />}</> :
                     <>
-                    {item}
+                        {item}
                     </>}
             </TableCell>
         )

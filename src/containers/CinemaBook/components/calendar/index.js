@@ -4,9 +4,7 @@ import CalendarPicker from '@material-ui/lab/CalendarPicker';
 import Grid from '@material-ui/core/Grid';
 import addDays from 'date-fns/addDays'
 
-const Calendar = ({date, handleChangeDate}) => {
-  
-
+const Calendar = ({ date, handleChangeDate }) => {
     return (
         <LocalizationProvider dateAdapter={AdapterDateFns}>
             <Grid >

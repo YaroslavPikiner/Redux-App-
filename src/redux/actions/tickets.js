@@ -20,8 +20,6 @@ export const saveUser = (data) => {
   }
 }
 
-
-
 export const loadTickets = () => {
   return {
     type: LOAD_TICKETS,
@@ -84,4 +82,3 @@ export const getFilteredTicket = () => {
     type: GET_FILTERED_TICKET
   }
 }
-
