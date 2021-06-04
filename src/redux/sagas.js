@@ -31,6 +31,4 @@ export function* watchLoadData() {
   yield takeEvery(LOAD_TICKETS, workedLoadTickets);
   yield takeEvery(SEND_USER, workedSaveUser);
   yield takeEvery(LOAD_USER, workedLoadUser);
-
-
 }

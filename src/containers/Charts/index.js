@@ -19,15 +19,16 @@ const Charts = () => {
   const tabsName = ['Randomize', 'Add', 'Remove'];
   const dispatch = useDispatch();
   const data = useSelector((state) => state.chartReducer.data);
+  const lenghtCharts = useSelector((state) => state.chartReducer.lengthOfChartLabel)
 
   const getValueCharts = (e) => {
     switch (e.currentTarget.value) {
       case 'Randomize':
-        return dispatch(randomizeChart());
+        return dispatch(randomizeChart(lenghtCharts));
       case 'Add':
-        return dispatch(addItem());
+        return dispatch(addItem(lenghtCharts));
       case 'Remove':
-        return dispatch(removeITem());
+        return dispatch(removeITem(lenghtCharts));
       default:
         return null;
     }

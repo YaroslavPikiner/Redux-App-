@@ -9,11 +9,14 @@ import './index.css';
 import logger from 'redux-logger';
 import createSagaMiddleWare from 'redux-saga';
 import { watchLoadData } from './redux/sagas';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 const sagasMiddleWare = createSagaMiddleWare();
 const store = createStore(
   rootReducer,
-  applyMiddleware(logger, sagasMiddleWare)
+  composeWithDevTools(
+    applyMiddleware(logger, sagasMiddleWare),
+  )
 );
 sagasMiddleWare.run(watchLoadData)
 
